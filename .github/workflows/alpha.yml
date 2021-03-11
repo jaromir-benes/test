@@ -6,19 +6,24 @@ on:
       - 'release*'
 
   workflow_dispatch:
-
+        
 jobs:
   build:
+    name: Create Release
     runs-on: ubuntu-latest
-
     steps:
-    
-    - name: Clone master
-      uses: actions/checkout@master
-      #with:
-        #ref: ${{ github.ref }}      
-        #fetch-depth: 0
+      - name: Checkout code
+        uses: actions/checkout@v2
         
-    - name: List tags
-      run: |
-        echo "${{ github.ref }}"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release-${{ github.ref }}
+          body_path: .release-notes
+          draft: false
+          prerelease: false
+
