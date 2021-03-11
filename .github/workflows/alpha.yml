@@ -30,4 +30,4 @@ jobs:
         pwd
         ls
         git log
-        git tag --points-at HEAD
+        git tag --points-at
