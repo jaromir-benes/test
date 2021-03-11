@@ -21,12 +21,11 @@ jobs:
     - name: Clone master
       uses: actions/checkout@v2
       with:
-        path: test
         fetch-depth: 0
         
     - name: List tags
       run: |
-        cd $GITHUB_WORKSPACE/test
-        git fetch --prune --tags
-        git log --tags
+        git fetch --prune --unshallow --tags
+        echo $?
+        git tag --list
 
