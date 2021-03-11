@@ -20,6 +20,7 @@ jobs:
       - name: Verify existence of release notes
         id: release_notes
         run: |
+          ls -al
           if ! test -e .release-notes; then
             exit 1
           fi  
