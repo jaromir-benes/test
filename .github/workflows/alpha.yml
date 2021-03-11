@@ -14,10 +14,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          
+      - name: Verify existence of release notes
+        id: release_notes
+        run: |
+          if ! test -e .release-notes; then
+            exit 1
+          fi  
         
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
+        if: steps.release_notes.conclusion=='success'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -26,4 +36,6 @@ jobs:
           body_path: .release-notes
           draft: false
           prerelease: false
+
+          
 
