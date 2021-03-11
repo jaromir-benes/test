@@ -21,6 +21,5 @@ jobs:
         
     - name: List tags
       run: |
-        git tag --list
-        git log --oneline
+        git tag --list --points-at
 
