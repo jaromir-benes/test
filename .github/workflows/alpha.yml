@@ -29,4 +29,5 @@ jobs:
         cd $GITHUB_WORKSPACE/test
         pwd
         ls
+        git log
         git tag --points-at HEAD
