@@ -6,28 +6,24 @@ on:
       - 'release*'
 
   workflow_dispatch:
-
+        
 jobs:
   build:
+    name: Create Release
     runs-on: ubuntu-latest
-
     steps:
-    
-    - name: Clone master
-      uses: actions/checkout@master
-      #with:
-        #ref: ${{ github.ref }}      
-        #fetch-depth: 0
+      - name: Checkout code
+        uses: actions/checkout@v2
         
-    - name: List tags
-      run: |
-        echo "${{ github.ref }}"
-        echo "--1--"
-        ls -al .git/refs/tags
-        echo "--2--"
-        cd .git/refs/tags
-        echo "--3--"
-        pwd
-        echo "--4--"
-        ls -al
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release-${{ github.ref }}
+          body_path: .release-notes
+          draft: false
+          prerelease: false
 
