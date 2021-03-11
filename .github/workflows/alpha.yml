@@ -27,4 +27,6 @@ jobs:
     - name: List tags
       run: |
         cd $GITHUB_WORKSPACE/test
+        pwd
+        ls
         git tag --points-at HEAD
