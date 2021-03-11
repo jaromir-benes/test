@@ -27,5 +27,6 @@ jobs:
     - name: List tags
       run: |
         cd $GITHUB_WORKSPACE/test
+        git fetch --prune --tags
         git log --tags
 
