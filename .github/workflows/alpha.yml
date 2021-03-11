@@ -22,7 +22,7 @@ jobs:
     - name: List tags
       run: |
         echo "${{ github.ref }}"
-        ls -al
-        cd .git/refs
+        ls .git/refs/tags
+        cd .git/refs/tags
         ls -al
 
