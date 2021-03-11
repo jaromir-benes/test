@@ -1,9 +1,9 @@
 name: alpha
 
 on:
-  create:
+  push:
     tags:
-      - release*
+      - 'release*'
 
   workflow_dispatch:
 
