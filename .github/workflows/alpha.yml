@@ -17,10 +17,9 @@ jobs:
       uses: actions/checkout@v2
       with:
         ref: ${{ github.ref }}      
-        fetch-depth: 0
+        fetch-depth: 1
         
     - name: List tags
       run: |
         git tag --list
-        git tag --list --points-at
 
