@@ -6,7 +6,7 @@ on:
 jobs:
   test-matlab:
     name: Run MATLAB Scripts
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@master
