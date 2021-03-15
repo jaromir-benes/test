@@ -8,14 +8,16 @@ jobs:
     name: Run MATLAB Scripts
     runs-on: ubuntu-20.04
     steps:
+    
+      - name: Install MATLAB
+        uses: matlab-actions/setup-matlab@v0
+        
       # Use @master, otherwise the system setup fails
       - name: Check out repository
         uses: actions/checkout@master
         with:
           token: ${{ secrets.ALL_ACCESS2 }}
         
-      - name: Install MATLAB
-        uses: matlab-actions/setup-matlab@v0
         
       - name: Run script
         uses: matlab-actions/run-command@v0
