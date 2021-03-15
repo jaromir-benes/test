@@ -14,10 +14,7 @@ jobs:
         
       # Use @master, otherwise the system setup fails
       - name: Check out repository
-        uses: actions/checkout@master
-        with:
-          token: ${{ secrets.ALL_ACCESS2 }}
-        
+        uses: actions/checkout@v2        
         
       - name: Run script
         uses: matlab-actions/run-command@v0
