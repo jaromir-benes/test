@@ -17,9 +17,10 @@ jobs:
       - name: Run script
         uses: matlab-actions/run-command@v0
         with:
-          command: testScript
+          command: ver
         
       - name: Run script
+        if: ${{ false }}
         uses: matlab-actions/run-command@v0
         with:
           command: testError
